@@ -79,7 +79,7 @@
 
 #include "movement.h"
 
-#define INTERVAL_TIMERS 9     // no of available customizable timers (be aware: only 4 bits reserved for this value in struct below)
+#define INTERVAL_TIMERS 3     // no of available customizable timers (be aware: only 4 bits reserved for this value in struct below)
 
 typedef struct {
     uint8_t warmup_minutes;
