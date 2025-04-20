@@ -7,7 +7,10 @@
 static const uint16_t ADDTIME_TICKS_START = 8;
 static const uint8_t ADDTIME_TICKS_FREQ = 8;
 static const uint8_t NORMAL_TICKS_FREQ = 1;
-static int8_t BEEP_SEQ[] = {BUZZER_NOTE_C8, 3, BUZZER_NOTE_REST, 3, -2, 2, BUZZER_NOTE_C8, 5, BUZZER_NOTE_REST, 25, 0};
+static int8_t BEEP_SEQ[] = {
+	BUZZER_NOTE_C8, 3, BUZZER_NOTE_REST, 3, -2, 2, BUZZER_NOTE_C8, 5, BUZZER_NOTE_REST, 25,
+	BUZZER_NOTE_C8, 3, BUZZER_NOTE_REST, 3, -2, 2, BUZZER_NOTE_C8, 5, BUZZER_NOTE_REST, 25,
+	0};
 
 typedef struct {
     // How much they care about us (lower is more)
