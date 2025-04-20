@@ -67,17 +67,21 @@ static void draw(micro_timer_state_t* state) {
     if (time_to_display.days == 0) {
         // No days -- leave it blank
         watch_display_string("  ", 2);
-    } else if (time_to_display.days <= 99) {
+    } else if (time_to_display.days <= 39) {
         // A normal number of days -- set it to the integer
-        snprintf(buf, sizeof(buf), "%2d", time_to_display.days);
+        snprintf(buf, sizeof(buf), "%2du", time_to_display.days);
         watch_display_string(buf, 2);
     } else {
         // An excessive number of days. We'll count them right, but can't
-        // display them. Try to represent an "infinity" sign
+        // display them. Draw some horizontal bars.
         //
-        // Given that this would require hitting the increment button over 2400
+        // Given that this would require hitting the increment button over 400
         // times, not the biggest concern.
-        watch_display_string("oo", 2);
+        watch_display_string("  ", 2);
+        watch_set_pixel(1, 9);
+        watch_set_pixel(0, 7);
+        watch_set_pixel(1, 8);
+        watch_set_pixel(2, 6);
     }
 }
 
@@ -165,6 +169,8 @@ void micro_timer_face_setup(movement_settings_t *settings, uint8_t watch_face_in
 }
 
 void micro_timer_face_activate(movement_settings_t *settings, void *context) {
+    (void) settings;
+
     micro_timer_state_t* state = (micro_timer_state_t*)context;
 
     watch_date_time now = watch_rtc_get_date_time();
@@ -206,6 +212,8 @@ bool micro_timer_face_loop(movement_event_t event, movement_settings_t *settings
 }
 
 void micro_timer_face_resign(movement_settings_t *settings, void *context) {
+    (void) settings;
+
     micro_timer_state_t* state = (micro_timer_state_t*)context;
 
     // If we're in the middle of adding time, finish that up right now.
