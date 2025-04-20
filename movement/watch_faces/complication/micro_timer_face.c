@@ -69,7 +69,7 @@ static void draw(micro_timer_state_t* state) {
         watch_display_string("  ", 2);
     } else if (time_to_display.days <= 39) {
         // A normal number of days -- set it to the integer
-        snprintf(buf, sizeof(buf), "%2du", time_to_display.days);
+        snprintf(buf, sizeof(buf), "%2lu", time_to_display.days);
         watch_display_string(buf, 2);
     } else {
         // An excessive number of days. We'll count them right, but can't
